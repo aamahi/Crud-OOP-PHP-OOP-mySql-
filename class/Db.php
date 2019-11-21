@@ -2,7 +2,7 @@
 
 class Db
 {
-    public function database()
+    public function connect()
     {
         $servername = "localhost";
         $username = "root";

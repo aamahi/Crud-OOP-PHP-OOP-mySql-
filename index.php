@@ -1,3 +1,11 @@
+<?php
+spl_autoload_register(function ($class) {
+    include "class/$class.php";
+});
+// include "class/Employe.php";
+// include "class/Db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +30,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">All Employe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Employe</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" aria-disabled="true">Contract</a>
@@ -50,18 +61,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            <?php
+                                $select = new Employe();
+                                $rows = $select->select();
+                                // print_r($rows);
+                                foreach ($rows as $row) {
+                                    // echo $row;
+                            ?>
+                                <tr>
+                                    
+                                    <th><?=$row['id'];?></th>
+                                    <td><?=$row['name'];?></td>
+                                    <td><?=$row['city'];?></td>
+                                    <td><?=$row['digination'];?></td>
+                                    <td>
+                                        <a class="btn btn-info btn-sm" href="">Edit</a>
+                                        <a class="btn btn-danger btn-sm" href="">Delete</a>
+                                    </td>
+                                </tr>
+
+                            <?php
+                                }
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
