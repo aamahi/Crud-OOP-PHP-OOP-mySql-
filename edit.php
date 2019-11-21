@@ -2,6 +2,12 @@
 spl_autoload_register(function ($class) {
     include "class/$class.php";
 });
+$id = $_GET['id'];
+
+if(isset($_POST['update'])){
+    $update = new Employe();
+    $update->update();
+}
 
 ?>
 
@@ -48,43 +54,34 @@ spl_autoload_register(function ($class) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="jumbotron">
-                    <h4 class="text-center">All Employe</h4>
-                    <table class="table mt-4">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">City</th>
-                                <th scope="col">Digination</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $select = new Employe();
-                            $rows = $select->select();
-                            // print_r($rows);
-                            foreach ($rows as $row) {
-                                // echo $row;
-                                ?>
-                                <tr>
+                    <h4 class="text-center">Add Employe</h4>
 
-                                    <th><?= $row['id']; ?></th>
-                                    <td><?= $row['name']; ?></td>
-                                    <td><?= $row['city']; ?></td>
-                                    <td><?= $row['digination']; ?></td>
-                                    <td>
-                                        <a class="btn btn-info btn-sm" href="edit.php?id=<?=$row['id'];?>">Edit</a>
-                                        <a class="btn btn-danger btn-sm" href="delete.php?id=<?=$row['id'];?>">Delete</a>
-                                    </td>
-                                </tr>
-
-                            <?php
-                            }
+                    <form action="" method="post">
+                        <?php
+                        $select = new Employe();
+                        $rows = $select->updateUser($id);
+                        foreach ($rows as $row) {
                             ?>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                                <input type="text" class="form-control" id="name" name="name" value="<?= $row['name']; ?>">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" name="city" value="<?= $row['city']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="digination">Digination</label>
+                                <input type="digination" class="form-control" id="digination" name="digination" value="<?= $row['digination']; ?>">
+                            </div>
+                            <button type="submit" name="update" class="btn btn-primary">Update</button>
+                        <?php
+                        }
+                        ?>
+                    </form>
 
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
