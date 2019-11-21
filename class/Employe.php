@@ -58,7 +58,7 @@ class Employe extends Db
         $result = $this->connect()->query($sql);
         if ($result) {
             header("location:index.php");
-            echo "<script>alert('Sucessfully, Data Updated')</script>";
+            echo "<script>alert('Sucessfully ! Data Updated')</script>";
             
         } else {
             echo "<script>alert('Failed ! Data Update')</script>";
