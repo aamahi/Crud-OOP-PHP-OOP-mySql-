@@ -49,43 +49,22 @@ spl_autoload_register(function ($class) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="jumbotron">
-                    <h4 class="text-center">All Employe</h4>
-                    <table class="table mt-4">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">City</th>
-                                <th scope="col">Digination</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $select = new Employe();
-                            $rows = $select->select();
-                            // print_r($rows);
-                            foreach ($rows as $row) {
-                                // echo $row;
-                                ?>
-                                <tr>
-
-                                    <th><?= $row['id']; ?></th>
-                                    <td><?= $row['name']; ?></td>
-                                    <td><?= $row['city']; ?></td>
-                                    <td><?= $row['digination']; ?></td>
-                                    <td>
-                                        <a class="btn btn-info btn-sm" href="">Edit</a>
-                                        <a class="btn btn-danger btn-sm" href="">Delete</a>
-                                    </td>
-                                </tr>
-
-                            <?php
-                            }
-                            ?>
-
-                        </tbody>
-                    </table>
+                    <h4 class="text-center">Add Employe</h4>
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" name="ciyt" placeholder="Enter You City">
+                        </div>
+                        <div class="form-group">
+                            <label for="digination">Digination</label>
+                            <input type="digination" class="form-control" id="digination" name="digination" placeholder="Digination">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
