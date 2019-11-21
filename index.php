@@ -2,8 +2,7 @@
 spl_autoload_register(function ($class) {
     include "class/$class.php";
 });
-// include "class/Employe.php";
-// include "class/Db.php";
+
 ?>
 
 <!DOCTYPE html>

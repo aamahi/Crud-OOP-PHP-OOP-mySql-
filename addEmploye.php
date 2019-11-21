@@ -2,8 +2,12 @@
 spl_autoload_register(function ($class) {
     include "class/$class.php";
 });
-// include "class/Employe.php";
-// include "class/Db.php";
+
+$insert = new Employe();
+if (isset($_POST['submit'])) { 
+    $insert->save($_POST);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -57,13 +61,13 @@ spl_autoload_register(function ($class) {
                         </div>
                         <div class="form-group">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" id="city" name="ciyt" placeholder="Enter You City">
+                            <input type="text" class="form-control" id="city" name="city" placeholder="Enter You City">
                         </div>
                         <div class="form-group">
                             <label for="digination">Digination</label>
                             <input type="digination" class="form-control" id="digination" name="digination" placeholder="Digination">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
